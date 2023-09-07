@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono
 @Service
 class NonBlockingService {
 
-    fun fibonacci(number: Int): Mono<Int> = Mono.justOrEmpty(number).map { calc(number) }
+    fun fibonacci(number: Int): Mono<Int> = Mono.justOrEmpty(number).map(::calc)
 
     private fun calc(n: Int): Int {
         if (n == 0 || n == 1) return n
