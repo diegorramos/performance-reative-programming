@@ -2,16 +2,18 @@ package br.com.diegorramos.nonblockingexample.domain.service
 
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
-import java.time.Duration
-import java.util.UUID
 
 @Service
 class NonBlockingService {
 
-    fun getAll(): Mono<String> {
-        return Mono.just(UUID.randomUUID().toString())
-            .map { id -> "{ 'id':$id }" }
-            .delayElement(Duration.ofSeconds(1))
+    fun fibonacci(n: Int): Mono<Int> {
+        return Mono.just(n)
+            .map { calc(n) }
             .log()
+    }
+
+    private fun calc(n: Int): Int {
+        if (n == 0 || n == 1) return n
+        return calc(n - 1) + calc(n - 2)
     }
 }

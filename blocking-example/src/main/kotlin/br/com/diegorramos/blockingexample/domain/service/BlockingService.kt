@@ -1,7 +1,6 @@
 package br.com.diegorramos.blockingexample.domain.service
 
 import org.springframework.stereotype.Service
-import java.util.*
 import java.util.logging.Logger
 
 @Service
@@ -9,11 +8,10 @@ class BlockingService {
 
     val log: Logger = Logger.getLogger(BlockingService::class.qualifiedName)
 
-    fun getAll(): String {
-        val id = UUID.randomUUID().toString()
-        val response = " { 'id':$id } "
-        Thread.sleep(1000)
-        log.info("response: $response")
-        return response
+    fun fibonacci(n: Int): Int {
+        if (n == 0 || n == 1) return n
+        val result = fibonacci(n - 1) + fibonacci(n - 2)
+        log.info("fibonacci. result=$result")
+        return result
     }
 }
