@@ -1,15 +1,12 @@
 package br.com.diegorramos.blockingexample.domain.service
 
 import org.springframework.stereotype.Service
-import java.util.logging.Logger
 
 @Service
 class BlockingService {
 
-    val log: Logger = Logger.getLogger(BlockingService::class.qualifiedName)
-
-    fun fibonacci(n: Int): Int {
-        if (n == 0 || n == 1) return n
-        return fibonacci(n - 1) + fibonacci(n - 2)
+    fun fibonacci(number: Int): Int {
+        return if (number == 0 || number == 1) number
+        else fibonacci(number - 1) + fibonacci(number - 2)
     }
 }

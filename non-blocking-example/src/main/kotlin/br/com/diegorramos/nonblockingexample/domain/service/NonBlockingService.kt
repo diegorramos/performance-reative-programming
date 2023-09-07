@@ -8,8 +8,8 @@ class NonBlockingService {
 
     fun fibonacci(number: Int): Mono<Int> = Mono.fromCallable { calc(number) }
 
-    private fun calc(n: Int): Int {
-        if (n == 0 || n == 1) return n
-        return calc(n - 1) + calc(n - 2)
+    fun calc(number: Int): Int {
+        return if (number == 0 || number == 1) number
+        else calc(number - 1) + calc(number - 2)
     }
 }
