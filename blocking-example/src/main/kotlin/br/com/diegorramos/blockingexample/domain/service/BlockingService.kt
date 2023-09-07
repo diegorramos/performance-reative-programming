@@ -10,8 +10,6 @@ class BlockingService {
 
     fun fibonacci(n: Int): Int {
         if (n == 0 || n == 1) return n
-        val result = fibonacci(n - 1) + fibonacci(n - 2)
-        log.info("fibonacci. result=$result")
-        return result
+        return fibonacci(n - 1) + fibonacci(n - 2)
     }
 }
